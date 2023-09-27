@@ -57,7 +57,7 @@ class LayoutTable extends StatelessWidget {
                                   SizedBox(width: 10,),
                                 ],
                               ),
-                              Row(
+                              const Row(
                                 children: [
                                   SizedBox(width: 15,),
                                 ],

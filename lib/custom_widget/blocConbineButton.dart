@@ -1,6 +1,3 @@
-import '../bloc_provider/store_info_bloc/a_store_bloc/store_a_bloc.dart';
-import '../bloc_provider/store_info_bloc/b_store_bloc/store_b_bloc.dart';
-import '../bloc_provider/store_info_bloc/store_to_table_bloc/table_info_bloc.dart';
 import '../setting/exportA.dart';
 import 'message.dart';
 
@@ -15,14 +12,13 @@ class _BlocCombineButtonState extends State<BlocCombineButton> {
 
   List<SubwayModelwithCode> storeA = [];
   List<SubwayModelwithCode> storeB = [];
-  List<SubwayModel> submodel = [];
+  List<SubwayModel> model = [];
   String code = '';
 
 
   @override
   void initState() {
     super.initState();
-
   }
 
   @override
@@ -35,13 +31,7 @@ class _BlocCombineButtonState extends State<BlocCombineButton> {
                     initial: () => [],
                     loading: () => [],
                     error: (msg) => [],
-                    loaded: (loaded){
-                      setState((){
-                        code = loaded;
-                      },
-                      );
-                    },
-                    ),
+                    loaded: (loaded) => setState(() => code = loaded)),
           ),
           BlocListener<SubInfoFilterBloc, SubInfoFilterState>(
             listener: (context, state) =>
@@ -49,42 +39,54 @@ class _BlocCombineButtonState extends State<BlocCombineButton> {
                     initial: () => [],
                     loading: () => [],
                     error: (msg) => [],
-                    loaded: (loaded) => setState(() => submodel = loaded)),
+                    loaded: (loaded) => setState(() => model = loaded)),
           ),
         ],
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             DialogButton(
-                onPressed: (){
-                  context.read<StoreABloc>().
-                  add(StoreAEvent.started(code, submodel));
-                  var info = submodel.first;
-                  context.read<TableInfoBloc>().
-                  add(TableInfoEvent.started(
-                      SubwayModelwithCode(
-                          subname: info.subname, engname: info.engname, code: code)
-                  ),
-                  );
-                  savemsg('목적지 A', info.subname, info.engname);
-                  setState(() {});
+                onPressed: () async {
+                  if(model.isNotEmpty && code.isNotEmpty){
+                    var info = await model.first;
+                    context.read<StoreABloc>().
+                    add(StoreAEvent.started(code, model));
+                    print('info ${info}');
+                    context.read<TableInfoBloc>().
+                    add(TableInfoEvent.started(
+                        SubwayModelwithCode(
+                            subname: info.subname,
+                            engname: info.engname,
+                            code: code)
+                    ));
+                    savemsg('목적지 A', info.subname, info.engname);
+                    setState(() {});
+                  } else {
+                    print('model value is Empty and code is ${code}');
+                  }
                 },
-                onLongPress: (){
-                  context.read<StoreBBloc>().
-                  add(StoreBEvent.started(code, submodel));
-                  var info = submodel.first;
-                  context.read<TableInfoBloc>().
-                  add(TableInfoEvent.started(
+                onLongPress: () async {
+                  if(model.isNotEmpty  && code.isNotEmpty){
+                    context.read<StoreBBloc>().
+                    add(StoreBEvent.started(code, model));
+                    var info = model.first;
+                    context.read<TableInfoBloc>().
+                    add(TableInfoEvent.started(
                       SubwayModelwithCode(
-                          subname: info.subname, engname: info.engname, code: code)
-                  ),
-                  );
-
-                  savemsg('목적지 B', info.subname, info.engname);
-                  setState(() {});
+                          subname: info.subname,
+                          engname: info.engname,
+                          code: code)
+                    ));
+                    savemsg('목적지 B', info.subname, info.engname);
+                    setState(() {});
+                  } else {
+                    print('model value is Empty and code is ${code}');
+                  }
                 },
                 comment: 'Save'),
-           DialogButton(comment: 'Adapt',
+
+           DialogButton(
+               comment: 'Adapt',
                onPressed: () => Navigator.pop(context))
           ],
         ));

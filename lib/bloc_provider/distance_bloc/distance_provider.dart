@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import '../../custom_widget/for_distance_provider.dart';
 import '../../setting/exportA.dart';
 import '../../setting/exportB.dart';
 
@@ -73,9 +74,16 @@ class DistanceCubit extends Cubit<SkTelecom_Model> {
         String formattedpathtype = routename.join(' - ');
         var time = utfIntoList.first.totalTime; ///  시간순
         noticeTime(model.nameA,model.nameB,formattedRoute,time);
+
         Get.snackbar(
-          '지하철기준 빠른 경로가 없습니다.',
-          '빠른경로 ${pathtype == '2' ? '(버스)' : pathtype == '3' ? '(버스-지하철)' : '---'} : ${formattedpathtype}\n${formattedRoute}\n${(time/60).toStringAsFixed(0)}분 소요',
+          '', '',
+          titleText: titleTextWidget(
+              '지하철기준 빠른 경로가 없습니다.',
+              '다른 교통 수단 검색경로:',
+              '${(time/60).toStringAsFixed(0)}분'),
+          messageText: messageTextWidget(
+              '빠른경로 ${pathtype == '2' ? '(버스)' : pathtype == '3' ? '(버스-지하철)' : '---'} : $formattedpathtype',
+              formattedRoute),
           backgroundColor: Colors.grey[100],
           shouldIconPulse: true,
           duration: Duration(seconds: 7),
@@ -93,11 +101,19 @@ class DistanceCubit extends Cubit<SkTelecom_Model> {
     }
   }
 
+
+
 void noticeTime(String nameA, nameB,route, int time){
-  print('start scheduleNotification');
   Get.snackbar(
-    '$nameB -> $nameA (${(time/60).toStringAsFixed(0)}분 소요)',
-    '도착 시간 2분전에 알람을 울립니다.\n\n이동경로 : ${route}',
+    '', '',
+    titleText: titleTextWidgetB(
+        '$nameB -> $nameA ',
+        '${(time/60).toStringAsFixed(0)}분'),
+
+    messageText: messageTextWidget(
+        '도착 시간 2분전에 알람을 울립니다.',
+        '이동경로 : $route'),
+
     backgroundColor: Colors.grey[100],
     icon: Icon(Icons.subway),
     shouldIconPulse: true,

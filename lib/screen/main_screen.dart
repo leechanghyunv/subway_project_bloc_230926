@@ -1,7 +1,4 @@
 import 'package:get/get.dart';
-import 'package:subway_project_withbloc_230919/inside_toggle/toggle_To_dialogA.dart';
-import '../bloc_provider/store_info_bloc/store_to_table_bloc/table_info_bloc.dart';
-import '../inside_toggle/toggle_To_dialogAA.dart';
 import '../setting/exportA.dart';
 import '../setting/exportB.dart';
 import 'main_screen/main_main_frame.dart';
@@ -16,11 +13,11 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-late String line = 'Line2';
-
 class _HomeScreenState extends State<HomeScreen> {
 
   SharedPreManager sharedPreManager = SharedPreManager();
+  late String initial = 'Line2';
+  late String linevalue = '';
   late String subwayname = 'SEOUL';
   late List<String> subwayList = [];
 
@@ -33,32 +30,28 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    initial = context.watch<MicroAirBloc?>()!.state.when(
+      initial: () => 'Line2', loading: (msg) => 'Line2',err: (msg) => 'Line2',
+      loaded: (a,b,dustInfo,c) => dustInfo.barLevel);
+    linevalue = context.watch<TransferBloc?>()!.state.when(
+        initial: () => initial, loading: () => 'Line2', error: (msg) => 'Line2',
+        loaded: (subA,subB) => subA.first.line_ui);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return LayoutMainScreen(
-      colorBar: BlocConsumer<MicroAirBloc,MicroAirState>(
-          listener: (context,state){
-            state.when(
-                initial: (){},
-                loading: (msg){},
-                loaded: (dustModel, level, dustInfo, color){
-                  setState(() => line = dustInfo.barLevel);
-                },
-                err: (err){});
-          },
-          builder: (context,state){
-            return state.when(
-                initial: () => const ColorBar(line: 'Line2'),
-                loading: (msg) => const ColorBar(line: 'Line2'),
-                err: (msg) => const ColorBar(line: 'Line2'),
-                loaded: (dustModel, level, dustInfo, color){
-                  return ColorBar(line: line);
-                },
-            );
-          }),
-      dropDown: DropdownCustom(
-        value: line,
-        onChanged: (value) => setState(() => line = value),
+      colorBar: ColorBar(
+          line: linevalue
       ),
+      dropDown: DropdownCustom(
+         value: linevalue,
+        onChanged: (value) =>
+            setState(() => linevalue = value),
+      ),
+
       iconCustom: IconCustom(
         onTap: (){
           Get.dialog(
@@ -125,7 +118,7 @@ class _HomeScreenState extends State<HomeScreen> {
       upandDown: UpandDown(
         color1: state == true ? Colors.grey[100] : Colors.grey[400],
         color2: state == false ? Colors.grey[100] : Colors.grey[400],
-        onTap1: () => setState(()  => state = false,),
+        onTap1: () => setState(()  => state = false),
         onTap2: () => setState(()  => state = true),
 
       ),
@@ -136,6 +129,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Get.dialog(
              ToggleToDialogA(),
             );
+           ;
           }else if(index == 1){
             // toggleguide2();
             // subwayList = box.read('List').cast<String>().toList() ?? [];
@@ -169,13 +163,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Center(
                   child: BlocBuilder<TableInfoBloc,SubwayModelwithCode>(
                       builder: (context,state){
-                        context.read<ScaduleBloc>().add(ScaduleEvent.started(state.code));
+                        context.read<ScaduleBloc>().
+                        add(ScaduleEvent.started(state.code));
                         if(state.code.contains('정보없음')){
                           return const TextFrame(comment: '목적지를 설정해주세요');
                         } else {
                           return TableScreen(
-                            subName: state.subname,
-                            engName: state.engname,
+                            subName: state.subname, engName: state.engname,
                           );
                         }
                       },

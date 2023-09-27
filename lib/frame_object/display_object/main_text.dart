@@ -15,10 +15,10 @@ class MainText extends StatelessWidget {
         child: BlocBuilder<TransferBloc,TransferState>(
           builder: (context,state){
             return state.when(
-              initial: () => SeoulWidget(),
-              loading: () => SeoulWidget(),
-              error: (error) => SeoulWidget(),
-              loadedA: (infoA,infoB){
+              initial: () => SeoulWidget('SEOUL'),
+              loading: () => SeoulWidget('loading'),
+              error: (error) => SeoulWidget(error),
+              loaded: (infoA,infoB){
                 var name = infoA.first.subname;
                 var eng = infoA.first.engname;
                 return Column(
@@ -38,29 +38,6 @@ class MainText extends StatelessWidget {
                     Text(eng == 'SEOUL' ? ' SEOUL' : ' ${eng}',
                     style: engcommon(eng),
                     )
-                  ],
-                );
-              },
-              loadedB: (infoB,infoA){
-                var name = infoB.first.subname;
-                var eng = infoB.first.engname;
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Tooltip(
-                      message: '',
-                      textStyle: commonStyle(),
-                      child: GestureDetector(
-                        child: AutoSizeText(
-                          name == 'SEOUL' ? 'SEOUL' : '${name}역',
-                          style: common(name),
-                          maxLines: 1,
-                        ),
-                      ),
-                    ),
-                    Text(eng == 'SEOUL' ? ' SEOUL' : ' ${eng}',
-                      style: engcommon(eng),
-                    ),
                   ],
                 );
               },

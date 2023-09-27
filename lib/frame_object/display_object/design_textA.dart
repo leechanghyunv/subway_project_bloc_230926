@@ -3,6 +3,8 @@ import '../../setting/exportB.dart';
 
 class TextContainerA extends StatelessWidget {
 
+  late String side = '';
+
   @override
   Widget build(BuildContext context) {
 
@@ -74,12 +76,12 @@ class TextContainerA extends StatelessWidget {
                         return state.when(
                             initial: () => Text('0010',style: textAcommon),
                             loading: () => Text('0010',style: textAcommon),
-                            loadedA: (stateA,stateB){
-                              return HeadingText(stateA.first.heading);
+                            loaded: (stateA,stateB){
+                              return HeadingText(
+                                  stateA.first.heading,
+                              stateA.first.line_ui);
                             },
-                            loadedB: (stateB,stateA){
-                              return HeadingText(stateA.first.heading);
-                            },
+
                             error: (msg) => Text(msg,
                                 style: textAcommon
                             ),
@@ -96,7 +98,7 @@ class TextContainerA extends StatelessWidget {
   }
 }
 
-Widget HeadingText(String side) => RichText(
+Widget HeadingText(String side,String line) => RichText(
   text: TextSpan(
     children: <TextSpan>[
       TextSpan(
@@ -107,7 +109,7 @@ Widget HeadingText(String side) => RichText(
             : '01',
         style: TextStyle(
             color: side == 'LEFT'
-                ? headingColor(side)
+                ? headingColor(line)
                 : Colors.black,
             fontSize: Device.aspectRatio >= 0.5 ? 19.sp : 18.sp,
             fontWeight: FontWeight.bold),
@@ -120,7 +122,7 @@ Widget HeadingText(String side) => RichText(
             : side == null ? '00'
             : '00',
         style: TextStyle(
-            color: side == 'RIGHT' ? headingColor(side)
+            color: side == 'RIGHT' ? headingColor(line)
                 : Colors.black,
             fontSize: Device.aspectRatio >= 0.5 ? 19.sp : 18.sp,
             fontWeight: FontWeight.bold),

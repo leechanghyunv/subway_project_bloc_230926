@@ -106,6 +106,7 @@ class _SwitchDialogCState extends State<SwitchDialogC> {
                                             var line = switchLine(value);
                                             context.read<ArrivalBloc>().
                                             add(ArrivalEvent.ArrivalList(widget.name, line));
+
                                         },
                                       );
                                     },

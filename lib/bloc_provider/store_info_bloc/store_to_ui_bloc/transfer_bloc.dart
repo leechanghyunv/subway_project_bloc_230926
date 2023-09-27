@@ -9,14 +9,14 @@ part 'transfer_bloc.freezed.dart';
 
 class TransferBloc extends Bloc<TransferEvent, TransferState> {
   TransferBloc() : super(const TransferState.initial()) {
+
     on<TransferEvent>((event, emit) async {
-      if(state is _SwitchA){
-        emit(_$_LoadedA(event.stateA, event.stateB));
-      }else if(state is _SwitchB){
-      }else{
-        emit(_$_LoadedB(event.stateB, event.stateA));
+      emit(_Initial());
+      if(event.stateA.isNotEmpty && event.stateB.isNotEmpty){
+        emit(_Loaded(event.stateA, event.stateB));
+      } else {
+        emit(_Error('0001'));
       }
-      emit(_Error('0001'));
     });
   }
 }

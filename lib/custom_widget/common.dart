@@ -29,6 +29,15 @@ const String msgB = '일반열차 : NOR(S)\n급행열차 : EXP(S)\nITX : ITX(T)'
 const String sms1 = 'Send SMS를 누르시면 민원문자를 보내실 수 있습니다. 지하철 민원 신고시 통로문 또는 출입문 위 칸번호 4~6자리와 종착역을 기재하셔야 빠른 민원이 가능합니다.';
 const String sms2 = '\n ex)오이도행 (열차번호)4764, 8-3번 추워요 에어컨 틀어주세요';
 
+// Widget Time_Provider() => TimerBuilder.periodic(
+//   const Duration(seconds: 1),
+//   builder: (context) =>
+//       TextFrame(
+//           comment: '현재시간: ${formatDate(DateTime.now(),
+//               [' ',am ,  ' ', hh, '시 ', nn, '분'])}'
+//       ),
+// );
+
 final textAcommon = TextStyle(
   fontSize: Device.aspectRatio >= 0.5 ? 19.sp : 18.sp,
   fontWeight: FontWeight.bold,
@@ -45,6 +54,7 @@ final dialogAB = TextStyle(
   fontSize: 3.5.w,
   fontWeight: FontWeight.bold,
   color: Colors.black,
+  overflow: TextOverflow.ellipsis,
 );
 
 final commonmin = TextStyle(
@@ -56,6 +66,11 @@ final tablecommon = TextStyle(
   fontSize: 2.8.w,
   fontWeight: FontWeight.bold,
   color: Colors.black,
+);
+
+final commonTextStyle = TextStyle(
+  fontSize: 3.7.w,
+  fontWeight: FontWeight.bold,
 );
 
 tableexstyle(String express) => TextStyle(
@@ -72,7 +87,8 @@ textAstyle(String head,String state) => TextStyle(
     fontWeight: FontWeight.bold
 );
 
-Widget SeoulWidget() => Text('SEOUL',
+Widget SeoulWidget(String state) => Text(
+    '$state',
     style: TextStyle(fontSize: 32.sp,
         fontWeight: FontWeight.bold));
 

@@ -1,9 +1,6 @@
 import 'package:get/get.dart';
 import 'package:subway_project_withbloc_230919/setting/exportA.dart';
 import 'package:subway_project_withbloc_230919/setting/exportB.dart';
-import 'bloc_provider/store_info_bloc/a_store_bloc/store_a_bloc.dart';
-import 'bloc_provider/store_info_bloc/b_store_bloc/store_b_bloc.dart';
-import 'bloc_provider/store_info_bloc/store_to_table_bloc/table_info_bloc.dart';
 
 Future<void> _initialize() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,7 +30,6 @@ class MyApp extends StatelessWidget {
         builder: (context, orientation, screenType){
           return  MultiBlocProvider(
             providers: [
-              /// TableInfoBloc
               BlocProvider<TableInfoBloc>(
                   create: (_)=>TableInfoBloc()),
               BlocProvider<DistanceCubit>(

@@ -22,49 +22,37 @@ mixin _$TransferEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(
             List<SubwayModelwithCode> stateA, List<SubwayModelwithCode> stateB)
-        switchA,
-    required TResult Function(
-            List<SubwayModelwithCode> stateB, List<SubwayModelwithCode> stateA)
-        switchB,
+        started,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             List<SubwayModelwithCode> stateA, List<SubwayModelwithCode> stateB)?
-        switchA,
-    TResult? Function(
-            List<SubwayModelwithCode> stateB, List<SubwayModelwithCode> stateA)?
-        switchB,
+        started,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             List<SubwayModelwithCode> stateA, List<SubwayModelwithCode> stateB)?
-        switchA,
-    TResult Function(
-            List<SubwayModelwithCode> stateB, List<SubwayModelwithCode> stateA)?
-        switchB,
+        started,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_SwitchA value) switchA,
-    required TResult Function(_SwitchB value) switchB,
+    required TResult Function(_Started value) started,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_SwitchA value)? switchA,
-    TResult? Function(_SwitchB value)? switchB,
+    TResult? Function(_Started value)? started,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SwitchA value)? switchA,
-    TResult Function(_SwitchB value)? switchB,
+    TResult Function(_Started value)? started,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -114,11 +102,11 @@ class _$TransferEventCopyWithImpl<$Res, $Val extends TransferEvent>
 }
 
 /// @nodoc
-abstract class _$$_SwitchACopyWith<$Res>
+abstract class _$$_StartedCopyWith<$Res>
     implements $TransferEventCopyWith<$Res> {
-  factory _$$_SwitchACopyWith(
-          _$_SwitchA value, $Res Function(_$_SwitchA) then) =
-      __$$_SwitchACopyWithImpl<$Res>;
+  factory _$$_StartedCopyWith(
+          _$_Started value, $Res Function(_$_Started) then) =
+      __$$_StartedCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -126,10 +114,10 @@ abstract class _$$_SwitchACopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SwitchACopyWithImpl<$Res>
-    extends _$TransferEventCopyWithImpl<$Res, _$_SwitchA>
-    implements _$$_SwitchACopyWith<$Res> {
-  __$$_SwitchACopyWithImpl(_$_SwitchA _value, $Res Function(_$_SwitchA) _then)
+class __$$_StartedCopyWithImpl<$Res>
+    extends _$TransferEventCopyWithImpl<$Res, _$_Started>
+    implements _$$_StartedCopyWith<$Res> {
+  __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -138,7 +126,7 @@ class __$$_SwitchACopyWithImpl<$Res>
     Object? stateA = null,
     Object? stateB = null,
   }) {
-    return _then(_$_SwitchA(
+    return _then(_$_Started(
       null == stateA
           ? _value._stateA
           : stateA // ignore: cast_nullable_to_non_nullable
@@ -153,8 +141,8 @@ class __$$_SwitchACopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SwitchA implements _SwitchA {
-  const _$_SwitchA(final List<SubwayModelwithCode> stateA,
+class _$_Started implements _Started {
+  const _$_Started(final List<SubwayModelwithCode> stateA,
       final List<SubwayModelwithCode> stateB)
       : _stateA = stateA,
         _stateB = stateB;
@@ -177,14 +165,14 @@ class _$_SwitchA implements _SwitchA {
 
   @override
   String toString() {
-    return 'TransferEvent.switchA(stateA: $stateA, stateB: $stateB)';
+    return 'TransferEvent.started(stateA: $stateA, stateB: $stateB)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SwitchA &&
+            other is _$_Started &&
             const DeepCollectionEquality().equals(other._stateA, _stateA) &&
             const DeepCollectionEquality().equals(other._stateB, _stateB));
   }
@@ -198,20 +186,17 @@ class _$_SwitchA implements _SwitchA {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SwitchACopyWith<_$_SwitchA> get copyWith =>
-      __$$_SwitchACopyWithImpl<_$_SwitchA>(this, _$identity);
+  _$$_StartedCopyWith<_$_Started> get copyWith =>
+      __$$_StartedCopyWithImpl<_$_Started>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
             List<SubwayModelwithCode> stateA, List<SubwayModelwithCode> stateB)
-        switchA,
-    required TResult Function(
-            List<SubwayModelwithCode> stateB, List<SubwayModelwithCode> stateA)
-        switchB,
+        started,
   }) {
-    return switchA(stateA, stateB);
+    return started(stateA, stateB);
   }
 
   @override
@@ -219,12 +204,9 @@ class _$_SwitchA implements _SwitchA {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             List<SubwayModelwithCode> stateA, List<SubwayModelwithCode> stateB)?
-        switchA,
-    TResult? Function(
-            List<SubwayModelwithCode> stateB, List<SubwayModelwithCode> stateA)?
-        switchB,
+        started,
   }) {
-    return switchA?.call(stateA, stateB);
+    return started?.call(stateA, stateB);
   }
 
   @override
@@ -232,14 +214,11 @@ class _$_SwitchA implements _SwitchA {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             List<SubwayModelwithCode> stateA, List<SubwayModelwithCode> stateB)?
-        switchA,
-    TResult Function(
-            List<SubwayModelwithCode> stateB, List<SubwayModelwithCode> stateA)?
-        switchB,
+        started,
     required TResult orElse(),
   }) {
-    if (switchA != null) {
-      return switchA(stateA, stateB);
+    if (started != null) {
+      return started(stateA, stateB);
     }
     return orElse();
   }
@@ -247,38 +226,35 @@ class _$_SwitchA implements _SwitchA {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_SwitchA value) switchA,
-    required TResult Function(_SwitchB value) switchB,
+    required TResult Function(_Started value) started,
   }) {
-    return switchA(this);
+    return started(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_SwitchA value)? switchA,
-    TResult? Function(_SwitchB value)? switchB,
+    TResult? Function(_Started value)? started,
   }) {
-    return switchA?.call(this);
+    return started?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SwitchA value)? switchA,
-    TResult Function(_SwitchB value)? switchB,
+    TResult Function(_Started value)? started,
     required TResult orElse(),
   }) {
-    if (switchA != null) {
-      return switchA(this);
+    if (started != null) {
+      return started(this);
     }
     return orElse();
   }
 }
 
-abstract class _SwitchA implements TransferEvent {
-  const factory _SwitchA(final List<SubwayModelwithCode> stateA,
-      final List<SubwayModelwithCode> stateB) = _$_SwitchA;
+abstract class _Started implements TransferEvent {
+  const factory _Started(final List<SubwayModelwithCode> stateA,
+      final List<SubwayModelwithCode> stateB) = _$_Started;
 
   @override
   List<SubwayModelwithCode> get stateA;
@@ -286,184 +262,7 @@ abstract class _SwitchA implements TransferEvent {
   List<SubwayModelwithCode> get stateB;
   @override
   @JsonKey(ignore: true)
-  _$$_SwitchACopyWith<_$_SwitchA> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_SwitchBCopyWith<$Res>
-    implements $TransferEventCopyWith<$Res> {
-  factory _$$_SwitchBCopyWith(
-          _$_SwitchB value, $Res Function(_$_SwitchB) then) =
-      __$$_SwitchBCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {List<SubwayModelwithCode> stateB, List<SubwayModelwithCode> stateA});
-}
-
-/// @nodoc
-class __$$_SwitchBCopyWithImpl<$Res>
-    extends _$TransferEventCopyWithImpl<$Res, _$_SwitchB>
-    implements _$$_SwitchBCopyWith<$Res> {
-  __$$_SwitchBCopyWithImpl(_$_SwitchB _value, $Res Function(_$_SwitchB) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? stateB = null,
-    Object? stateA = null,
-  }) {
-    return _then(_$_SwitchB(
-      null == stateB
-          ? _value._stateB
-          : stateB // ignore: cast_nullable_to_non_nullable
-              as List<SubwayModelwithCode>,
-      null == stateA
-          ? _value._stateA
-          : stateA // ignore: cast_nullable_to_non_nullable
-              as List<SubwayModelwithCode>,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_SwitchB implements _SwitchB {
-  const _$_SwitchB(final List<SubwayModelwithCode> stateB,
-      final List<SubwayModelwithCode> stateA)
-      : _stateB = stateB,
-        _stateA = stateA;
-
-  final List<SubwayModelwithCode> _stateB;
-  @override
-  List<SubwayModelwithCode> get stateB {
-    if (_stateB is EqualUnmodifiableListView) return _stateB;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_stateB);
-  }
-
-  final List<SubwayModelwithCode> _stateA;
-  @override
-  List<SubwayModelwithCode> get stateA {
-    if (_stateA is EqualUnmodifiableListView) return _stateA;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_stateA);
-  }
-
-  @override
-  String toString() {
-    return 'TransferEvent.switchB(stateB: $stateB, stateA: $stateA)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_SwitchB &&
-            const DeepCollectionEquality().equals(other._stateB, _stateB) &&
-            const DeepCollectionEquality().equals(other._stateA, _stateA));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_stateB),
-      const DeepCollectionEquality().hash(_stateA));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_SwitchBCopyWith<_$_SwitchB> get copyWith =>
-      __$$_SwitchBCopyWithImpl<_$_SwitchB>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            List<SubwayModelwithCode> stateA, List<SubwayModelwithCode> stateB)
-        switchA,
-    required TResult Function(
-            List<SubwayModelwithCode> stateB, List<SubwayModelwithCode> stateA)
-        switchB,
-  }) {
-    return switchB(stateB, stateA);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            List<SubwayModelwithCode> stateA, List<SubwayModelwithCode> stateB)?
-        switchA,
-    TResult? Function(
-            List<SubwayModelwithCode> stateB, List<SubwayModelwithCode> stateA)?
-        switchB,
-  }) {
-    return switchB?.call(stateB, stateA);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            List<SubwayModelwithCode> stateA, List<SubwayModelwithCode> stateB)?
-        switchA,
-    TResult Function(
-            List<SubwayModelwithCode> stateB, List<SubwayModelwithCode> stateA)?
-        switchB,
-    required TResult orElse(),
-  }) {
-    if (switchB != null) {
-      return switchB(stateB, stateA);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_SwitchA value) switchA,
-    required TResult Function(_SwitchB value) switchB,
-  }) {
-    return switchB(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_SwitchA value)? switchA,
-    TResult? Function(_SwitchB value)? switchB,
-  }) {
-    return switchB?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SwitchA value)? switchA,
-    TResult Function(_SwitchB value)? switchB,
-    required TResult orElse(),
-  }) {
-    if (switchB != null) {
-      return switchB(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _SwitchB implements TransferEvent {
-  const factory _SwitchB(final List<SubwayModelwithCode> stateB,
-      final List<SubwayModelwithCode> stateA) = _$_SwitchB;
-
-  @override
-  List<SubwayModelwithCode> get stateB;
-  @override
-  List<SubwayModelwithCode> get stateA;
-  @override
-  @JsonKey(ignore: true)
-  _$$_SwitchBCopyWith<_$_SwitchB> get copyWith =>
+  _$$_StartedCopyWith<_$_Started> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -475,10 +274,7 @@ mixin _$TransferState {
     required TResult Function() loading,
     required TResult Function(
             List<SubwayModelwithCode> stateA, List<SubwayModelwithCode> stateB)
-        loadedA,
-    required TResult Function(
-            List<SubwayModelwithCode> stateA, List<SubwayModelwithCode> stateB)
-        loadedB,
+        loaded,
     required TResult Function(String msg) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -488,10 +284,7 @@ mixin _$TransferState {
     TResult? Function()? loading,
     TResult? Function(
             List<SubwayModelwithCode> stateA, List<SubwayModelwithCode> stateB)?
-        loadedA,
-    TResult? Function(
-            List<SubwayModelwithCode> stateA, List<SubwayModelwithCode> stateB)?
-        loadedB,
+        loaded,
     TResult? Function(String msg)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -501,10 +294,7 @@ mixin _$TransferState {
     TResult Function()? loading,
     TResult Function(
             List<SubwayModelwithCode> stateA, List<SubwayModelwithCode> stateB)?
-        loadedA,
-    TResult Function(
-            List<SubwayModelwithCode> stateA, List<SubwayModelwithCode> stateB)?
-        loadedB,
+        loaded,
     TResult Function(String msg)? error,
     required TResult orElse(),
   }) =>
@@ -513,8 +303,7 @@ mixin _$TransferState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_LoadedA value) loadedA,
-    required TResult Function(_LoadedB value) loadedB,
+    required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -522,8 +311,7 @@ mixin _$TransferState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_LoadedA value)? loadedA,
-    TResult? Function(_LoadedB value)? loadedB,
+    TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -531,8 +319,7 @@ mixin _$TransferState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_LoadedA value)? loadedA,
-    TResult Function(_LoadedB value)? loadedB,
+    TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) =>
@@ -598,10 +385,7 @@ class _$_Initial implements _Initial {
     required TResult Function() loading,
     required TResult Function(
             List<SubwayModelwithCode> stateA, List<SubwayModelwithCode> stateB)
-        loadedA,
-    required TResult Function(
-            List<SubwayModelwithCode> stateA, List<SubwayModelwithCode> stateB)
-        loadedB,
+        loaded,
     required TResult Function(String msg) error,
   }) {
     return initial();
@@ -614,10 +398,7 @@ class _$_Initial implements _Initial {
     TResult? Function()? loading,
     TResult? Function(
             List<SubwayModelwithCode> stateA, List<SubwayModelwithCode> stateB)?
-        loadedA,
-    TResult? Function(
-            List<SubwayModelwithCode> stateA, List<SubwayModelwithCode> stateB)?
-        loadedB,
+        loaded,
     TResult? Function(String msg)? error,
   }) {
     return initial?.call();
@@ -630,10 +411,7 @@ class _$_Initial implements _Initial {
     TResult Function()? loading,
     TResult Function(
             List<SubwayModelwithCode> stateA, List<SubwayModelwithCode> stateB)?
-        loadedA,
-    TResult Function(
-            List<SubwayModelwithCode> stateA, List<SubwayModelwithCode> stateB)?
-        loadedB,
+        loaded,
     TResult Function(String msg)? error,
     required TResult orElse(),
   }) {
@@ -648,8 +426,7 @@ class _$_Initial implements _Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_LoadedA value) loadedA,
-    required TResult Function(_LoadedB value) loadedB,
+    required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
   }) {
     return initial(this);
@@ -660,8 +437,7 @@ class _$_Initial implements _Initial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_LoadedA value)? loadedA,
-    TResult? Function(_LoadedB value)? loadedB,
+    TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
   }) {
     return initial?.call(this);
@@ -672,8 +448,7 @@ class _$_Initial implements _Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_LoadedA value)? loadedA,
-    TResult Function(_LoadedB value)? loadedB,
+    TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -729,10 +504,7 @@ class _$_Loading implements _Loading {
     required TResult Function() loading,
     required TResult Function(
             List<SubwayModelwithCode> stateA, List<SubwayModelwithCode> stateB)
-        loadedA,
-    required TResult Function(
-            List<SubwayModelwithCode> stateA, List<SubwayModelwithCode> stateB)
-        loadedB,
+        loaded,
     required TResult Function(String msg) error,
   }) {
     return loading();
@@ -745,10 +517,7 @@ class _$_Loading implements _Loading {
     TResult? Function()? loading,
     TResult? Function(
             List<SubwayModelwithCode> stateA, List<SubwayModelwithCode> stateB)?
-        loadedA,
-    TResult? Function(
-            List<SubwayModelwithCode> stateA, List<SubwayModelwithCode> stateB)?
-        loadedB,
+        loaded,
     TResult? Function(String msg)? error,
   }) {
     return loading?.call();
@@ -761,10 +530,7 @@ class _$_Loading implements _Loading {
     TResult Function()? loading,
     TResult Function(
             List<SubwayModelwithCode> stateA, List<SubwayModelwithCode> stateB)?
-        loadedA,
-    TResult Function(
-            List<SubwayModelwithCode> stateA, List<SubwayModelwithCode> stateB)?
-        loadedB,
+        loaded,
     TResult Function(String msg)? error,
     required TResult orElse(),
   }) {
@@ -779,8 +545,7 @@ class _$_Loading implements _Loading {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_LoadedA value) loadedA,
-    required TResult Function(_LoadedB value) loadedB,
+    required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
   }) {
     return loading(this);
@@ -791,8 +556,7 @@ class _$_Loading implements _Loading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_LoadedA value)? loadedA,
-    TResult? Function(_LoadedB value)? loadedB,
+    TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
   }) {
     return loading?.call(this);
@@ -803,8 +567,7 @@ class _$_Loading implements _Loading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_LoadedA value)? loadedA,
-    TResult Function(_LoadedB value)? loadedB,
+    TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -820,20 +583,19 @@ abstract class _Loading implements TransferState {
 }
 
 /// @nodoc
-abstract class _$$_LoadedACopyWith<$Res> {
-  factory _$$_LoadedACopyWith(
-          _$_LoadedA value, $Res Function(_$_LoadedA) then) =
-      __$$_LoadedACopyWithImpl<$Res>;
+abstract class _$$_LoadedCopyWith<$Res> {
+  factory _$$_LoadedCopyWith(_$_Loaded value, $Res Function(_$_Loaded) then) =
+      __$$_LoadedCopyWithImpl<$Res>;
   @useResult
   $Res call(
       {List<SubwayModelwithCode> stateA, List<SubwayModelwithCode> stateB});
 }
 
 /// @nodoc
-class __$$_LoadedACopyWithImpl<$Res>
-    extends _$TransferStateCopyWithImpl<$Res, _$_LoadedA>
-    implements _$$_LoadedACopyWith<$Res> {
-  __$$_LoadedACopyWithImpl(_$_LoadedA _value, $Res Function(_$_LoadedA) _then)
+class __$$_LoadedCopyWithImpl<$Res>
+    extends _$TransferStateCopyWithImpl<$Res, _$_Loaded>
+    implements _$$_LoadedCopyWith<$Res> {
+  __$$_LoadedCopyWithImpl(_$_Loaded _value, $Res Function(_$_Loaded) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -842,7 +604,7 @@ class __$$_LoadedACopyWithImpl<$Res>
     Object? stateA = null,
     Object? stateB = null,
   }) {
-    return _then(_$_LoadedA(
+    return _then(_$_Loaded(
       null == stateA
           ? _value._stateA
           : stateA // ignore: cast_nullable_to_non_nullable
@@ -857,8 +619,8 @@ class __$$_LoadedACopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_LoadedA implements _LoadedA {
-  const _$_LoadedA(final List<SubwayModelwithCode> stateA,
+class _$_Loaded implements _Loaded {
+  const _$_Loaded(final List<SubwayModelwithCode> stateA,
       final List<SubwayModelwithCode> stateB)
       : _stateA = stateA,
         _stateB = stateB;
@@ -881,14 +643,14 @@ class _$_LoadedA implements _LoadedA {
 
   @override
   String toString() {
-    return 'TransferState.loadedA(stateA: $stateA, stateB: $stateB)';
+    return 'TransferState.loaded(stateA: $stateA, stateB: $stateB)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LoadedA &&
+            other is _$_Loaded &&
             const DeepCollectionEquality().equals(other._stateA, _stateA) &&
             const DeepCollectionEquality().equals(other._stateB, _stateB));
   }
@@ -902,8 +664,8 @@ class _$_LoadedA implements _LoadedA {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LoadedACopyWith<_$_LoadedA> get copyWith =>
-      __$$_LoadedACopyWithImpl<_$_LoadedA>(this, _$identity);
+  _$$_LoadedCopyWith<_$_Loaded> get copyWith =>
+      __$$_LoadedCopyWithImpl<_$_Loaded>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -912,13 +674,10 @@ class _$_LoadedA implements _LoadedA {
     required TResult Function() loading,
     required TResult Function(
             List<SubwayModelwithCode> stateA, List<SubwayModelwithCode> stateB)
-        loadedA,
-    required TResult Function(
-            List<SubwayModelwithCode> stateA, List<SubwayModelwithCode> stateB)
-        loadedB,
+        loaded,
     required TResult Function(String msg) error,
   }) {
-    return loadedA(stateA, stateB);
+    return loaded(stateA, stateB);
   }
 
   @override
@@ -928,13 +687,10 @@ class _$_LoadedA implements _LoadedA {
     TResult? Function()? loading,
     TResult? Function(
             List<SubwayModelwithCode> stateA, List<SubwayModelwithCode> stateB)?
-        loadedA,
-    TResult? Function(
-            List<SubwayModelwithCode> stateA, List<SubwayModelwithCode> stateB)?
-        loadedB,
+        loaded,
     TResult? Function(String msg)? error,
   }) {
-    return loadedA?.call(stateA, stateB);
+    return loaded?.call(stateA, stateB);
   }
 
   @override
@@ -944,15 +700,12 @@ class _$_LoadedA implements _LoadedA {
     TResult Function()? loading,
     TResult Function(
             List<SubwayModelwithCode> stateA, List<SubwayModelwithCode> stateB)?
-        loadedA,
-    TResult Function(
-            List<SubwayModelwithCode> stateA, List<SubwayModelwithCode> stateB)?
-        loadedB,
+        loaded,
     TResult Function(String msg)? error,
     required TResult orElse(),
   }) {
-    if (loadedA != null) {
-      return loadedA(stateA, stateB);
+    if (loaded != null) {
+      return loaded(stateA, stateB);
     }
     return orElse();
   }
@@ -962,11 +715,10 @@ class _$_LoadedA implements _LoadedA {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_LoadedA value) loadedA,
-    required TResult Function(_LoadedB value) loadedB,
+    required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
   }) {
-    return loadedA(this);
+    return loaded(this);
   }
 
   @override
@@ -974,11 +726,10 @@ class _$_LoadedA implements _LoadedA {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_LoadedA value)? loadedA,
-    TResult? Function(_LoadedB value)? loadedB,
+    TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
   }) {
-    return loadedA?.call(this);
+    return loaded?.call(this);
   }
 
   @override
@@ -986,216 +737,25 @@ class _$_LoadedA implements _LoadedA {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_LoadedA value)? loadedA,
-    TResult Function(_LoadedB value)? loadedB,
+    TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
-    if (loadedA != null) {
-      return loadedA(this);
+    if (loaded != null) {
+      return loaded(this);
     }
     return orElse();
   }
 }
 
-abstract class _LoadedA implements TransferState {
-  const factory _LoadedA(final List<SubwayModelwithCode> stateA,
-      final List<SubwayModelwithCode> stateB) = _$_LoadedA;
+abstract class _Loaded implements TransferState {
+  const factory _Loaded(final List<SubwayModelwithCode> stateA,
+      final List<SubwayModelwithCode> stateB) = _$_Loaded;
 
   List<SubwayModelwithCode> get stateA;
   List<SubwayModelwithCode> get stateB;
   @JsonKey(ignore: true)
-  _$$_LoadedACopyWith<_$_LoadedA> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_LoadedBCopyWith<$Res> {
-  factory _$$_LoadedBCopyWith(
-          _$_LoadedB value, $Res Function(_$_LoadedB) then) =
-      __$$_LoadedBCopyWithImpl<$Res>;
-  @useResult
-  $Res call(
-      {List<SubwayModelwithCode> stateA, List<SubwayModelwithCode> stateB});
-}
-
-/// @nodoc
-class __$$_LoadedBCopyWithImpl<$Res>
-    extends _$TransferStateCopyWithImpl<$Res, _$_LoadedB>
-    implements _$$_LoadedBCopyWith<$Res> {
-  __$$_LoadedBCopyWithImpl(_$_LoadedB _value, $Res Function(_$_LoadedB) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? stateA = null,
-    Object? stateB = null,
-  }) {
-    return _then(_$_LoadedB(
-      null == stateA
-          ? _value._stateA
-          : stateA // ignore: cast_nullable_to_non_nullable
-              as List<SubwayModelwithCode>,
-      null == stateB
-          ? _value._stateB
-          : stateB // ignore: cast_nullable_to_non_nullable
-              as List<SubwayModelwithCode>,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_LoadedB implements _LoadedB {
-  const _$_LoadedB(final List<SubwayModelwithCode> stateA,
-      final List<SubwayModelwithCode> stateB)
-      : _stateA = stateA,
-        _stateB = stateB;
-
-  final List<SubwayModelwithCode> _stateA;
-  @override
-  List<SubwayModelwithCode> get stateA {
-    if (_stateA is EqualUnmodifiableListView) return _stateA;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_stateA);
-  }
-
-  final List<SubwayModelwithCode> _stateB;
-  @override
-  List<SubwayModelwithCode> get stateB {
-    if (_stateB is EqualUnmodifiableListView) return _stateB;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_stateB);
-  }
-
-  @override
-  String toString() {
-    return 'TransferState.loadedB(stateA: $stateA, stateB: $stateB)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_LoadedB &&
-            const DeepCollectionEquality().equals(other._stateA, _stateA) &&
-            const DeepCollectionEquality().equals(other._stateB, _stateB));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_stateA),
-      const DeepCollectionEquality().hash(_stateB));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_LoadedBCopyWith<_$_LoadedB> get copyWith =>
-      __$$_LoadedBCopyWithImpl<_$_LoadedB>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(
-            List<SubwayModelwithCode> stateA, List<SubwayModelwithCode> stateB)
-        loadedA,
-    required TResult Function(
-            List<SubwayModelwithCode> stateA, List<SubwayModelwithCode> stateB)
-        loadedB,
-    required TResult Function(String msg) error,
-  }) {
-    return loadedB(stateA, stateB);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(
-            List<SubwayModelwithCode> stateA, List<SubwayModelwithCode> stateB)?
-        loadedA,
-    TResult? Function(
-            List<SubwayModelwithCode> stateA, List<SubwayModelwithCode> stateB)?
-        loadedB,
-    TResult? Function(String msg)? error,
-  }) {
-    return loadedB?.call(stateA, stateB);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(
-            List<SubwayModelwithCode> stateA, List<SubwayModelwithCode> stateB)?
-        loadedA,
-    TResult Function(
-            List<SubwayModelwithCode> stateA, List<SubwayModelwithCode> stateB)?
-        loadedB,
-    TResult Function(String msg)? error,
-    required TResult orElse(),
-  }) {
-    if (loadedB != null) {
-      return loadedB(stateA, stateB);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_LoadedA value) loadedA,
-    required TResult Function(_LoadedB value) loadedB,
-    required TResult Function(_Error value) error,
-  }) {
-    return loadedB(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_LoadedA value)? loadedA,
-    TResult? Function(_LoadedB value)? loadedB,
-    TResult? Function(_Error value)? error,
-  }) {
-    return loadedB?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_LoadedA value)? loadedA,
-    TResult Function(_LoadedB value)? loadedB,
-    TResult Function(_Error value)? error,
-    required TResult orElse(),
-  }) {
-    if (loadedB != null) {
-      return loadedB(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _LoadedB implements TransferState {
-  const factory _LoadedB(final List<SubwayModelwithCode> stateA,
-      final List<SubwayModelwithCode> stateB) = _$_LoadedB;
-
-  List<SubwayModelwithCode> get stateA;
-  List<SubwayModelwithCode> get stateB;
-  @JsonKey(ignore: true)
-  _$$_LoadedBCopyWith<_$_LoadedB> get copyWith =>
+  _$$_LoadedCopyWith<_$_Loaded> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1265,10 +825,7 @@ class _$_Error implements _Error {
     required TResult Function() loading,
     required TResult Function(
             List<SubwayModelwithCode> stateA, List<SubwayModelwithCode> stateB)
-        loadedA,
-    required TResult Function(
-            List<SubwayModelwithCode> stateA, List<SubwayModelwithCode> stateB)
-        loadedB,
+        loaded,
     required TResult Function(String msg) error,
   }) {
     return error(msg);
@@ -1281,10 +838,7 @@ class _$_Error implements _Error {
     TResult? Function()? loading,
     TResult? Function(
             List<SubwayModelwithCode> stateA, List<SubwayModelwithCode> stateB)?
-        loadedA,
-    TResult? Function(
-            List<SubwayModelwithCode> stateA, List<SubwayModelwithCode> stateB)?
-        loadedB,
+        loaded,
     TResult? Function(String msg)? error,
   }) {
     return error?.call(msg);
@@ -1297,10 +851,7 @@ class _$_Error implements _Error {
     TResult Function()? loading,
     TResult Function(
             List<SubwayModelwithCode> stateA, List<SubwayModelwithCode> stateB)?
-        loadedA,
-    TResult Function(
-            List<SubwayModelwithCode> stateA, List<SubwayModelwithCode> stateB)?
-        loadedB,
+        loaded,
     TResult Function(String msg)? error,
     required TResult orElse(),
   }) {
@@ -1315,8 +866,7 @@ class _$_Error implements _Error {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_LoadedA value) loadedA,
-    required TResult Function(_LoadedB value) loadedB,
+    required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
   }) {
     return error(this);
@@ -1327,8 +877,7 @@ class _$_Error implements _Error {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_LoadedA value)? loadedA,
-    TResult? Function(_LoadedB value)? loadedB,
+    TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
   }) {
     return error?.call(this);
@@ -1339,8 +888,7 @@ class _$_Error implements _Error {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_LoadedA value)? loadedA,
-    TResult Function(_LoadedB value)? loadedB,
+    TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {

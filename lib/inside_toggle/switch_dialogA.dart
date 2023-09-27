@@ -6,7 +6,11 @@ class SwitchDialogA extends StatefulWidget {
   final String dest;
   final String line;
 
-  const SwitchDialogA({super.key, required this.name, required this.list, required this.dest, required this.line});
+  const SwitchDialogA({super.key,
+    required this.name,
+    required this.list,
+    required this.dest,
+    required this.line});
 
   @override
   State<SwitchDialogA> createState() => _SwitchDialogAState();
@@ -45,16 +49,16 @@ class _SwitchDialogAState extends State<SwitchDialogA> {
                     var arrivalA = arrival.where((e) => updnLine1.contains(e.updnLine));
                     var arrivalB = arrival.where((e) => updnLine2.contains(e.updnLine));
 
-                    var subNumber1 = arrivalA.map((e) => '${e.btrainNo}').first;
-                    var subState1 = arrivalA.map((e) => '${e.arvlCd}').first;
-                    var subSttus1 = arrivalA.map((e) => '${e.btrainSttus}').first;
-                    var destination1 = arrivalA.map((e) => '${e.trainLineNm}').first;
+                    var subNumber1 = arrivalA.map((e) => e.btrainNo).first;
+                    var subState1 = arrivalA.map((e) => e.arvlCd).first;
+                    var subSttus1 = arrivalA.map((e) => e.btrainSttus).first;
+                    var destination1 = arrivalA.map((e) => e.trainLineNm).first;
                     String filtedDestination1 = destination1.split(" - ")[0];
 
-                    var subNumber2 = arrivalB.map((e) => '${e.btrainNo}').first;
-                    var subState2 = arrivalB.map((e) => '${e.arvlCd}').first;
-                    var subSttus2 = arrivalB.map((e) => '${e.btrainSttus}').first;
-                    var destination2 = arrivalB.map((e) => '${e.trainLineNm}').first;
+                    var subNumber2 = arrivalB.map((e) => e.btrainNo).first;
+                    var subState2 = arrivalB.map((e) => e.arvlCd).first;
+                    var subSttus2 = arrivalB.map((e) => e.btrainSttus).first;
+                    var destination2 = arrivalB.map((e) => e.trainLineNm).first;
                     String filtedDestination2 = destination2.split(" - ")[0];
 
                     return Container(
@@ -82,7 +86,7 @@ class _SwitchDialogAState extends State<SwitchDialogA> {
                   width: double.maxFinite,
                   color: Colors.white,
                   child: state.when(
-                    initial: () => Row(children: [TextFrame(comment: 'initial.....')]),
+                    initial: () => const Row(children: [TextFrame(comment: 'initial.....')]),
                     loading: (msg) => Row(children: [TextFrame(comment: msg)]),
                     err: (msg) => Row(children: [TextFrame(comment: msg)]),
                     loaded: (weather, main, widget){
@@ -91,7 +95,7 @@ class _SwitchDialogAState extends State<SwitchDialogA> {
                           widget,
                           TextFrame(comment: weather.first.description),
                           const Expanded(child: Text('')),
-                          // TransferIcon(),
+                           TransferIcon(),
                         ],
                       );
                     }),

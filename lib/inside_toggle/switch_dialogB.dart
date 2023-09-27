@@ -25,8 +25,6 @@ class _SwitchDialogBState extends State<SwitchDialogB> {
 
   String dropdownvalue = 'Line2';
 
-
-
   @override
   void initState() {
     super.initState();
@@ -74,7 +72,7 @@ class _SwitchDialogBState extends State<SwitchDialogB> {
                     state.when(
                         initial: (){},
                         loading: (msg){},
-                        loaded: (dustModel, double, dustInfo, color){
+                        loaded: (dustModel, level, dustInfo, color){
                           setState(() {
                             dropdownvalue = dustInfo.barLevel.toString();
                           });
@@ -139,7 +137,6 @@ class _SwitchDialogBState extends State<SwitchDialogB> {
                               fontWeight: FontWeight.bold,color: Colors.black),
                           selected: true,
                         onSelected: (isSelected){
-                            ///
                           AlertDialog(
                             content: BlocConsumer(
                               listener: (context,state){

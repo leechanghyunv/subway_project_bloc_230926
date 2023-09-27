@@ -1,4 +1,4 @@
-import '../bloc_provider/store_info_bloc/store_to_table_bloc/table_info_bloc.dart';
+import '../bloc_provider/distance_bloc/distance_provider.dart';
 import '../bloc_provider/store_info_bloc/store_to_ui_bloc/transfer_bloc.dart';
 import '../setting/exportA.dart';
 
@@ -19,10 +19,9 @@ class _ToggleToDialogAAState extends State<ToggleToDialogAA> {
       var stateB = storeB.first;
       return AlertDialog(
           content: SwitchDialogA(
-              name: stateA.subname,
-              list: stateA.subwayid.toString(),
-              dest: stateB.subname,
-              line: stateA.line),
+              name: stateA.subname, list: stateA.subwayid.toString(),
+              dest: stateB.subname, line: stateA.line
+          ),
         actions: [
           DialogButton(
             onPressed: () => Navigator.pop(context),
@@ -32,9 +31,20 @@ class _ToggleToDialogAAState extends State<ToggleToDialogAA> {
             onPressed: (){
               context.read<TableInfoBloc>().
               add(TableInfoEvent.started(storeA.first));
-
+              print('TransferEventB');
               context.read<TransferBloc>().
-              add(TransferEvent.switchB(storeB, storeA));
+              add(TransferEvent.started(storeB, storeA));
+
+              DistModel model = DistModel(
+                latA: stateA.lat.toString(), lngA: stateA.lng.toString(),
+                nameA: stateA.subname,
+                latB: stateB.lat.toString(), lngB: stateB.lng.toString(),
+                nameB: stateB.subname,
+              );
+
+              context.read<DistanceCubit>().callApiSubInfo(model);
+
+
               Navigator.pop(context);
             },
             comment: 'Adapt',

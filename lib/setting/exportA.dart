@@ -77,4 +77,7 @@ export '../model/code_model.dart';
 export '../custom_widget/blocConbineButton.dart';
 export '../../custom_widget/blocConbineTButton.dart';
 
+export 'package:subway_project_withbloc_230919/inside_toggle/toggle_To_dialogA.dart';
+export '../bloc_provider/store_info_bloc/store_to_table_bloc/table_info_bloc.dart';
+export '../inside_toggle/toggle_To_dialogAA.dart';
 

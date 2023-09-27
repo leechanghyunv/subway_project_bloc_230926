@@ -1,8 +1,25 @@
 import '../../setting/exportA.dart';
 import '../../setting/exportB.dart';
 
-class DialogDesignBoxA extends StatelessWidget {
+class DialogDesignBoxA extends StatefulWidget {
   const DialogDesignBoxA({super.key});
+
+  @override
+  State<DialogDesignBoxA> createState() => _DialogDesignBoxAState();
+}
+
+class _DialogDesignBoxAState extends State<DialogDesignBoxA> {
+
+  late String linevalue = 'Line2';
+
+  @override
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
+    linevalue = context.watch<TransferBloc?>()!.state.when(
+        initial: () => 'Line2', loading: () => 'Line2', error: (msg) => 'Line2',
+        loaded: (subA,subB) => subA.first.line_ui);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -10,8 +27,6 @@ class DialogDesignBoxA extends StatelessWidget {
     final username = context.read<UserNameBloc>().state;
     double sizeWidth = 2.42.w;
     double contHeight = 16.8.w;
-
-    String line = 'Line2';
 
     return Container(
       height: 16.5.w,
@@ -21,7 +36,7 @@ class DialogDesignBoxA extends StatelessWidget {
           SizedBox(
             height: 14.5.w,
             width: 3.6.w,
-            child: ColorContainer(line),
+            child: ColorContainer(linevalue),
           ),
           SizedBox(
             width: sizeWidth,
@@ -71,16 +86,12 @@ class DialogDesignBoxA extends StatelessWidget {
                         initial: () => Text('SEOUL', style: dialogAB),
                         loading: () => Text('SEOUL', style: dialogAB),
                         error: (msg) => Text('SEOUL', style: dialogAB),
-                          loadedA: (A,B){
-                            line = A.first.line_ui;
+                          loaded: (A,B){
+                            linevalue = A.first.line_ui;
                             return Text('${A.first.subname}역',
                                 style: dialogAB);
                           },
-                          loadedB: (A,B){
-                            line = B.first.line_ui;
-                            return Text('${B.first.subname}역',
-                                style: dialogAB);
-                          },
+
                       );
                     }),
               ],

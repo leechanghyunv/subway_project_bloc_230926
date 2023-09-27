@@ -115,6 +115,8 @@ class DialogPage extends StatelessWidget {
                               child: InkWell(
                                 onTap: (){
                                   context.read<ArrivalBloc>().add(ArrivalEvent.ArrivalList(row.subname, row.subwayid.toString()));
+                                  context.read<CodeBloc>().add(CodeEvent.started(row.subname, row.line_ui));
+                                  context.read<SubInfoFilterBloc>().add(SubInfoFilterEvent.filtedList(row.subname));
                                   context.read<SubInfoFilterBlocB>().add(SubInfoFilterEvent.filtedList(row.subname));
                                   Get.dialog(
                                     AlertDialog(

@@ -1,5 +1,4 @@
 import 'package:subway_project_withbloc_230919/setting/exportA.dart';
-import 'package:flutter/material.dart';
 
 class SmsFunction extends StatelessWidget {
 
