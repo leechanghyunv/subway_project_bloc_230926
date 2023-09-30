@@ -80,9 +80,14 @@ tableexstyle(String express) => TextStyle(
     overflow: TextOverflow.ellipsis
 );
 
-textAstyle(String head,String state) => TextStyle(
-    color: head == 'RIGHT' ? headingColor(state)
-        : Colors.black,
+textAstyleL(String side,String line) => TextStyle(
+    color: side == 'LEFT' ? headingColor(line) : Colors.black,
+    fontSize: Device.aspectRatio >= 0.5 ? 19.sp : 18.sp,
+    fontWeight: FontWeight.bold
+);
+
+textAstyleR(String side,String line) => TextStyle(
+    color: side == 'RIGHT' ? headingColor(line) : Colors.black,
     fontSize: Device.aspectRatio >= 0.5 ? 19.sp : 18.sp,
     fontWeight: FontWeight.bold
 );

@@ -1,6 +1,50 @@
-
+import 'package:get/get.dart';
 import '../setting/exportA.dart';
 import '../setting/exportB.dart';
+
+void getNoticeTime(
+    String nameA,
+    String nameB,
+    String route,
+    int time){
+  Get.snackbar(
+    '', '',
+    titleText: titleTextWidgetB(
+        '$nameB -> $nameA ',
+        '${(time/60).toStringAsFixed(0)}분'),
+    messageText: messageTextWidget(
+        '도착 시간 2분전에 알람을 울립니다.',
+        '이동경로 : $route'),
+    backgroundColor: Colors.grey[100],
+    icon: const Icon(Icons.subway),
+    shouldIconPulse: true,
+    duration: Duration(seconds: 7),
+  );
+}
+
+void getAnotherNotice(
+    int time,
+    String path,
+    String pathtype,
+    String route){
+  Get.snackbar(
+    '', '',
+    titleText: titleTextWidget(
+        '지하철기준 빠른 경로가 없습니다.',
+        '다른 교통 수단 검색경로:',
+        '${(time/60).toStringAsFixed(0)}분'),
+    messageText: messageTextWidget(
+        '빠른경로 ${path == '2'
+            ? '(버스)'
+            : path == '3'
+            ? '(버스-지하철)'
+            : '---'} : $pathtype',
+        route),
+    backgroundColor: Colors.grey[100],
+    shouldIconPulse: true,
+    duration: Duration(seconds: 7),
+  );
+}
 
 Widget titleTextWidget(String text1, String text2,String text3) => Column(
   crossAxisAlignment: CrossAxisAlignment.start,

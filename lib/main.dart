@@ -1,6 +1,9 @@
 import 'package:get/get.dart';
 import 'package:subway_project_withbloc_230919/setting/exportA.dart';
 import 'package:subway_project_withbloc_230919/setting/exportB.dart';
+import 'package:timezone/data/latest.dart' as tz;
+
+import 'bloc_provider/sub_info_bloc/sub_info_provider.dart';
 
 Future<void> _initialize() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,8 +20,11 @@ void main() async {
           : await getApplicationDocumentsDirectory()
   );
   await _initialize();
+  timezonefunction();
   runApp(const MyApp());
 }
+
+timezonefunction () => tz.initializeTimeZones();
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -30,6 +36,8 @@ class MyApp extends StatelessWidget {
         builder: (context, orientation, screenType){
           return  MultiBlocProvider(
             providers: [
+              BlocProvider<SubwayDetaInfo>(
+                  create: (_)=>SubwayDetaInfo()),
               BlocProvider<TableInfoBloc>(
                   create: (_)=>TableInfoBloc()),
               BlocProvider<DistanceCubit>(

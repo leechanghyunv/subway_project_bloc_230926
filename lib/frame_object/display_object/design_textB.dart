@@ -64,13 +64,13 @@ class TextContainerB extends StatelessWidget {
                     ),
                     BlocBuilder<DistanceCubit,SkTelecom_Model>(
                       builder: (context,state){
-                        if(state.updown == 1){
+                        if(state.updown >= 0){
                           return ToolTipWidget(
                             message: msgB,
                             child: Text( 'NOR(S)', style: commonB,
                             ),
                           );
-                        }else if(state.updown == -1){
+                        }else if(state.updown < 0){
                           return ToolTipWidget(
                             message: msgB,
                             child: Text( 'NOR(S)', style: commonB,

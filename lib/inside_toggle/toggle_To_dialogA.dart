@@ -1,4 +1,5 @@
 import 'package:subway_project_withbloc_230919/bloc_provider/store_info_bloc/store_to_ui_bloc/transfer_bloc.dart';
+import 'package:subway_project_withbloc_230919/bloc_provider/sub_info_bloc/sub_info_provider.dart';
 import '../bloc_provider/distance_bloc/distance_provider.dart';
 import '../setting/exportA.dart';
 

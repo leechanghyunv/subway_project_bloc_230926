@@ -1,3 +1,5 @@
+import 'package:subway_project_withbloc_230919/bloc_provider/sub_info_bloc/sub_info_provider.dart';
+import '../model/sub_detail_data_model.dart';
 import '../setting/exportA.dart';
 
 class SwitchDialogA extends StatefulWidget {
@@ -51,16 +53,22 @@ class _SwitchDialogAState extends State<SwitchDialogA> {
 
                     var subNumber1 = arrivalA.map((e) => e.btrainNo).first;
                     var subState1 = arrivalA.map((e) => e.arvlCd).first;
-                    var subSttus1 = arrivalA.map((e) => e.btrainSttus).first;
+                    var subStatus1 = arrivalA.map((e) => e.btrainSttus).first;
                     var destination1 = arrivalA.map((e) => e.trainLineNm).first;
                     String filtedDestination1 = destination1.split(" - ")[0];
 
                     var subNumber2 = arrivalB.map((e) => e.btrainNo).first;
                     var subState2 = arrivalB.map((e) => e.arvlCd).first;
-                    var subSttus2 = arrivalB.map((e) => e.btrainSttus).first;
+                    var subStatus2 = arrivalB.map((e) => e.btrainSttus).first;
                     var destination2 = arrivalB.map((e) => e.trainLineNm).first;
                     String filtedDestination2 = destination2.split(" - ")[0];
 
+                    context.read<SubwayDetaInfo>().getInfo(SubDetailModel(
+                          subNumber1: subNumber1, subState1: subState1,
+                          subStatus1: subStatus1, subNumber2: subNumber2,
+                          filtedDestination1: filtedDestination1,
+                          subState2: subState2, subStatus2: subStatus2,
+                          filtedDestination2: filtedDestination2));
                     return Container(
                       color: Colors.grey[100],
                       width: double.maxFinite,

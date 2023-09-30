@@ -1,12 +1,18 @@
+import '../../bloc_provider/sub_info_bloc/sub_info_provider.dart';
+import '../../model/sub_detail_data_model.dart';
 import '../../setting/exportA.dart';
 import '../../setting/exportB.dart';
 
 class TextContainerA extends StatelessWidget {
 
-  late String side = '';
-
   @override
   Widget build(BuildContext context) {
+    Widget UiText (String textAmsg, String text) =>
+        ToolTipWidget(
+          message: textAmsg,
+          child: Text(text,
+            style: textAcommon),
+        );
 
     return Container(
       color: Colors.transparent,
@@ -18,39 +24,19 @@ class TextContainerA extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ToolTipWidget(
-                  message: textAmsg,
-                  child: Text('NUMBER',
-                    style: textAcommon,
-                  ),
-                ),
+                UiText(textAmsg,'NUMBER'),
                 SizedBox(height: 2.w,
                 ),
                 BlocBuilder<DistanceCubit,SkTelecom_Model>(
                     builder: (context,state){
-                      if(state.updown == 1){
-                        return ToolTipWidget(
-                          child: Row(
-                            children: [
-
-                            ],
-                          ),
-                        );
-                      }else if(state.updown == -1){
-                        return ToolTipWidget(
-                          child: Row(
-                            children: [
-
-                            ],
-                          ),
-                        );
-                      }
-                      return ToolTipWidget(
-                        message: textAmsg,
-                        child: Text('3728C99',
-                          style: textAcommon,
-                        ),
-                      );
+                        if(state.updown < 0){
+                          print('상행');
+                          return SubDetailInfo1();
+                        }else if(state.updown > 0){
+                          print('하행');
+                          return SubDetailInfo2();
+                        };
+                        return UiText(textAmsg, '3728C99');
                     }),
               ],
             ),
@@ -60,12 +46,7 @@ class TextContainerA extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ToolTipWidget(
-                  message: textAmsg2,
-                  child: Text(
-                    'GATE', style: textAcommon,
-                  ),
-                ),
+                UiText(textAmsg2,'GATE'),
                 SizedBox(
                   height: 2.w,
                 ),
@@ -79,7 +60,7 @@ class TextContainerA extends StatelessWidget {
                             loaded: (stateA,stateB){
                               return HeadingText(
                                   stateA.first.heading,
-                              stateA.first.line_ui);
+                                  stateA.first.line_ui);
                             },
 
                             error: (msg) => Text(msg,
@@ -98,6 +79,26 @@ class TextContainerA extends StatelessWidget {
   }
 }
 
+Widget SubDetailInfo1() => BlocBuilder<SubwayDetaInfo,SubDetailModel>(
+builder: (context,state){
+  print('state.subState1: ${state.subState1}');
+  return ToolTipWidget(
+  message: textAmsg,
+  child: Text('${state.subNumber1}U${state.subState1}',
+style: textAcommon,),
+  );
+});
+
+Widget SubDetailInfo2() => BlocBuilder<SubwayDetaInfo,SubDetailModel>(
+    builder: (context,state){
+      print('state.subState2: ${state.subState2}');
+      return ToolTipWidget(
+        message: textAmsg,
+        child: Text('${state.subNumber2}D${state.subState2}',
+          style: textAcommon,),
+      );
+    });
+
 Widget HeadingText(String side,String line) => RichText(
   text: TextSpan(
     children: <TextSpan>[
@@ -107,12 +108,7 @@ Widget HeadingText(String side,String line) => RichText(
             : side == 'LEFT' ? 'L'
             : side == null ? '01'
             : '01',
-        style: TextStyle(
-            color: side == 'LEFT'
-                ? headingColor(line)
-                : Colors.black,
-            fontSize: Device.aspectRatio >= 0.5 ? 19.sp : 18.sp,
-            fontWeight: FontWeight.bold),
+        style: textAstyleL(side,line),
       ),
 
       TextSpan(
@@ -121,11 +117,7 @@ Widget HeadingText(String side,String line) => RichText(
             : side == 'LEFT' ? 'EFT'
             : side == null ? '00'
             : '00',
-        style: TextStyle(
-            color: side == 'RIGHT' ? headingColor(line)
-                : Colors.black,
-            fontSize: Device.aspectRatio >= 0.5 ? 19.sp : 18.sp,
-            fontWeight: FontWeight.bold),
+        style: textAstyleR(side,line),
       ),
     ],
   ),

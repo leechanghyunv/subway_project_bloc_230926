@@ -1,6 +1,5 @@
 import 'package:subway_project_withbloc_230919/setting/exportA.dart';
 import 'package:timezone/timezone.dart' as tz;
-
 import '../bloc_provider/distance_bloc/distance_provider.dart';
 
 class Noti {
