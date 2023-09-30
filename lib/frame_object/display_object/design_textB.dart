@@ -1,3 +1,5 @@
+import '../../bloc_provider/sub_info_bloc/sub_info_provider.dart';
+import '../../model/sub_detail_data_model.dart';
 import '../../setting/exportA.dart';
 import '../../setting/exportB.dart';
 
@@ -64,18 +66,10 @@ class TextContainerB extends StatelessWidget {
                     ),
                     BlocBuilder<DistanceCubit,SkTelecom_Model>(
                       builder: (context,state){
-                        if(state.updown >= 0){
-                          return ToolTipWidget(
-                            message: msgB,
-                            child: Text( 'NOR(S)', style: commonB,
-                            ),
-                          );
-                        }else if(state.updown < 0){
-                          return ToolTipWidget(
-                            message: msgB,
-                            child: Text( 'NOR(S)', style: commonB,
-                            ),
-                          );
+                        if(state.updown < 0){
+                          return SubDetailInfo3();
+                        }else if(state.updown > 0){
+                          return SubDetailInfo4();
                         }
                         return ToolTipWidget(
                           message: msgB,
@@ -117,6 +111,24 @@ class TextContainerB extends StatelessWidget {
     );
   }
 
+  Widget SubDetailInfo3() => BlocBuilder<SubwayDetaInfo,SubDetailModel>(
+      builder: (context,state){
+        return ToolTipWidget(
+          message: msgB,
+          child: Text(status(state.subStatus1),
+            style: commonB,),
+        );
+      });
+
+  Widget SubDetailInfo4() => BlocBuilder<SubwayDetaInfo,SubDetailModel>(
+      builder: (context,state){
+        return ToolTipWidget(
+          message: msgB,
+          child: Text(status(state.subStatus2),
+            style: commonB,),
+        );
+      });
+
   String status (String state){
     if(state == '일반'){
       return 'NOR(S)';
@@ -132,7 +144,7 @@ Widget InfoColumn(String cost,TextStyle common) => Column(
   crossAxisAlignment: CrossAxisAlignment.start,
   children: [
     ToolTipWidget(
-      message: '지하철요금\n${cost}원',
+      message: '지하철요금\n$cost원',
       child: Text('FARE ', style: common,
       ),
     ),
@@ -140,9 +152,9 @@ Widget InfoColumn(String cost,TextStyle common) => Column(
       height: 2.w,
     ),
     ToolTipWidget(
-      message: '지하철요금\n${cost}원',
+      message: '지하철요금\n$cost원',
       child: Text(cost.isNotEmpty
-          ? '${cost}'
+          ? cost
           : '0000',
         style: common,
       ),

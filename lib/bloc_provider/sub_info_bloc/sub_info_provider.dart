@@ -6,7 +6,7 @@ class SubwayDetaInfo extends Cubit<SubDetailModel> {
 
   void getInfo(SubDetailModel model) {
     print('SubwayDetaInfo: $model');
-    emit(state);
+    emit(model);
   }
 
 }
