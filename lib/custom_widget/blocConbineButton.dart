@@ -1,3 +1,5 @@
+import 'package:subway_project_withbloc_230919/bloc_provider/sub_List_bloc/sub_list_cubit.dart';
+
 import '../setting/exportA.dart';
 import 'message.dart';
 
@@ -59,6 +61,7 @@ class _BlocCombineButtonState extends State<BlocCombineButton> {
                             engname: info.engname,
                             code: code)
                     ));
+                    context.read<SubListCubit>().addList(info.subname);
                     savemsg('목적지 A', info.subname, info.engname);
                     setState(() {});
                   } else {
@@ -77,6 +80,7 @@ class _BlocCombineButtonState extends State<BlocCombineButton> {
                           engname: info.engname,
                           code: code)
                     ));
+                    context.read<SubListCubit>().addList(info.subname);
                     savemsg('목적지 B', info.subname, info.engname);
                     setState(() {});
                   } else {

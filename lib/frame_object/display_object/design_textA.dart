@@ -58,11 +58,8 @@ class TextContainerA extends StatelessWidget {
                             initial: () => Text('0010',style: textAcommon),
                             loading: () => Text('0010',style: textAcommon),
                             loaded: (stateA,stateB){
-                              return HeadingText(
-                                  stateA.first.heading,
-                                  stateA.first.line_ui);
+                              return HeadingText(stateA.first.heading, stateA.first.line_ui);
                             },
-
                             error: (msg) => Text(msg,
                                 style: textAcommon
                             ),

@@ -131,7 +131,6 @@ class DialogPage extends StatelessWidget {
                                         DialogButton(
                                           comment: 'Select',
                                           onPressed: (){
-                                            // Select(row.subname);
                                             Navigator.pop(context);
                                           },
                                         ),

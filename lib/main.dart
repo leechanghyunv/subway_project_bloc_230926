@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:subway_project_withbloc_230919/bloc_provider/sub_List_bloc/sub_list_cubit.dart';
 import 'package:subway_project_withbloc_230919/setting/exportA.dart';
 import 'package:subway_project_withbloc_230919/setting/exportB.dart';
 import 'package:timezone/data/latest.dart' as tz;
@@ -36,6 +37,8 @@ class MyApp extends StatelessWidget {
         builder: (context, orientation, screenType){
           return  MultiBlocProvider(
             providers: [
+              BlocProvider<SubListCubit>(
+                  create: (_)=>SubListCubit()),
               BlocProvider<SubwayDetaInfo>(
                   create: (_)=>SubwayDetaInfo()),
               BlocProvider<TableInfoBloc>(

@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:subway_project_withbloc_230919/bloc_provider/sub_List_bloc/sub_list_cubit.dart';
 import '../setting/exportA.dart';
 import '../setting/exportB.dart';
 import 'main_screen/main_main_frame.dart';
@@ -131,14 +132,19 @@ class _HomeScreenState extends State<HomeScreen> {
             );
            ;
           }else if(index == 1){
-            // toggleguide2();
-            // subwayList = box.read('List').cast<String>().toList() ?? [];
-            // List<String> sharedList = sharedPreManager.getList();
-            // List<String> reversed = subwayList.reversed.toSet().toList();
             Get.dialog(
               AlertDialog(
-                content: SwitchDialogB(
-                    subwayList: []),
+                content: BlocBuilder<SubListCubit,List<String>>(
+                    builder: (context,state){
+                      if(state.isNotEmpty){
+                        var subList = state.reversed.toSet().toList();
+                        return SwitchDialogB(
+                            subwayList: subList);
+                      } else {
+                        return SwitchDialogB(
+                            subwayList: []);
+                      }
+                }),
                 actions: [
                   BlocCombineButton(),
                 ],

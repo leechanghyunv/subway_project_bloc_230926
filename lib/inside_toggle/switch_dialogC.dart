@@ -24,6 +24,8 @@ class _SwitchDialogCState extends State<SwitchDialogC> {
   }
 
 
+
+
   @override
   Widget build(BuildContext context) {
     double textSize = 3.6.w;
@@ -46,11 +48,12 @@ class _SwitchDialogCState extends State<SwitchDialogC> {
                     loading: () => TextFrame(comment: 'loading'),
                     error: (msg) => TextFrame(comment: msg),
                     loaded: (arrival,up1,up2,down1,down2){
-                      return Column(
+                      return
+                        Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           TextFrame(
-                            comment: '\n${subline} ${widget.name}역\n',
+                            comment: '\n$subline ${widget.name}역\n',
                           ),
                           TextFrame(comment: up1.toString()),
                           TextFrame(comment: '${up2.toString()}\n'),
@@ -127,4 +130,6 @@ class _SwitchDialogCState extends State<SwitchDialogC> {
     );
   }
 }
+
+
 

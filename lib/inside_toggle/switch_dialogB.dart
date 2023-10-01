@@ -25,10 +25,12 @@ class _SwitchDialogBState extends State<SwitchDialogB> {
 
   String dropdownvalue = 'Line2';
 
+
   @override
   void initState() {
     super.initState();
-    context.read<LatlngBloc>().add(LatlngEvent.started(dropdownvalue));
+    context.read<LatlngBloc>().
+    add(LatlngEvent.started(dropdownvalue));
   }
 
   @override
@@ -129,42 +131,47 @@ class _SwitchDialogBState extends State<SwitchDialogB> {
                   itemCount: widget.subwayList.length,
                   itemBuilder: (context,index){
                     var row = widget.subwayList[index];
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
+                    return Padding(
+                      padding: const EdgeInsets.all(3.5),
                       child: ChoiceChip(
-                          label: TextFrame(comment: '$row'),
+                          label: TextFrame(comment: row),
                           labelStyle: const TextStyle(
                               fontWeight: FontWeight.bold,color: Colors.black),
                           selected: true,
                         onSelected: (isSelected){
-                          AlertDialog(
-                            content: BlocConsumer(
-                              listener: (context,state){
-                                context.read<SubInfoFilterBloc>().add(SubInfoFilterEvent.filtedList(row));
-                                context.read<SubInfoFilterBlocB>().add(SubInfoFilterEvent.filtedList(row));
-                              },
-                              builder: (context,state){
-                                return SwitchDialogC(name: row,line: dropdownvalue);
-                              },
-                            ),
-                            actions: [
-                              DialogButton(
-                                comment: 'Cencel',
-                                onPressed: (){
-                                  Navigator.pop(context);
-                                },
-                              ),
-                              DialogButton(
-                                comment: 'Select',
-                                onPressed: (){
-                                  // Select(row);
-                                  sharedPreManager.addList(row);
-                                  addlist(widget.subwayList,row);
-                                  Navigator.pop(context);
-                                },
-                              ),
-                            ],
-                          );
+                          context.read<SubInfoFilterBloc>().
+                          add(SubInfoFilterEvent.filtedList(row));
+                          context.read<SubInfoFilterBlocB>().
+                          add(SubInfoFilterEvent.filtedList(row));
+                            showDialog(
+                                context: context,
+                                builder: (context){
+                              return AlertDialog(
+                                content: BlocBuilder<SubInfoFilterBlocB,SubInfoFilterState>(
+                                    builder: (context,state){
+                                      return state.when(
+                                          initial: () => SwitchDialogC(line: dropdownvalue, name: row),
+                                          loading: () => SwitchDialogC(line: dropdownvalue, name: row),
+                                          loaded: (loaded) => SwitchDialogC(line: loaded.first.line, name: row),
+                                          error: (msg) => SwitchDialogC(line: dropdownvalue, name: row));
+                                    }),
+                                actions: [
+                                  DialogButton(
+                                    comment: 'Cencel',
+                                    onPressed: (){
+                                      Navigator.pop(context);
+                                    },
+                                  ),
+                                  DialogButton(
+                                    comment: 'Select',
+                                    onPressed: (){
+                                      Navigator.pop(context);
+                                    },
+                                  ),
+                                ],
+                              );
+                            });
+
                         },
 
                       ),
@@ -182,13 +189,5 @@ class _SwitchDialogBState extends State<SwitchDialogB> {
     'Line1', 'Line2', 'Line3', 'Line4', 'Line5', 'Line6', 'Line7', 'Line8', 'Line9', '신분당', '수인분당', '경의선', '우이신설', '공항철도',
   ];
 
-  void addlist (List<dynamic> list, String name) async {
-    if(list.length <= 6){
-      list.add(name);
-      await box.write('List', list);
-    } else {
-      list.removeAt(0);
-      await box.write('List', list);
-    }
-  }
+
 }
