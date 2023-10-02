@@ -13,8 +13,7 @@ class _SeoulApiService implements SeoulApiService {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??=
-        'http://openapi.seoul.go.kr:8088/4c6f72784b6272613735677166456d/json';
+    baseUrl ??= 'http://openapi.seoul.go.kr:8088';
   }
 
   final Dio _dio;
@@ -23,6 +22,7 @@ class _SeoulApiService implements SeoulApiService {
 
   @override
   Future<SearchResult> getTimeTable(
+    String? key,
     String? code,
     String? week,
     String? updown,
@@ -40,7 +40,7 @@ class _SeoulApiService implements SeoulApiService {
     )
             .compose(
               _dio.options,
-              '/SearchSTNTimeTableByIDService/1/500/${code}/${week}/${updown}',
+              '/${key}/json/SearchSTNTimeTableByIDService/1/500/${code}/${week}/${updown}',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -146,8 +146,7 @@ class _ArrivalApiService implements ArrivalApiService {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??=
-        'http://swopenapi.seoul.go.kr/api/subway/4c6f72784b6272613735677166456d/json';
+    baseUrl ??= 'http://swopenapi.seoul.go.kr/api/subway';
   }
 
   final Dio _dio;
@@ -155,7 +154,10 @@ class _ArrivalApiService implements ArrivalApiService {
   String? baseUrl;
 
   @override
-  Future<SearchArrival> getArrival(String? subname) async {
+  Future<SearchArrival> getArrival(
+    String? key,
+    String? subname,
+  ) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     queryParameters.removeWhere((k, v) => v == null);
@@ -169,7 +171,7 @@ class _ArrivalApiService implements ArrivalApiService {
     )
             .compose(
               _dio.options,
-              '/realtimeStationArrival/0/16/${subname}',
+              '/${key}/json/realtimeStationArrival/0/16/${subname}',
               queryParameters: queryParameters,
               data: _data,
             )

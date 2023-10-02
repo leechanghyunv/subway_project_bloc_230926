@@ -1,5 +1,4 @@
 import '../bloc_provider/distance_bloc/distance_provider.dart';
-import '../bloc_provider/store_info_bloc/store_to_ui_bloc/transfer_bloc.dart';
 import '../setting/exportA.dart';
 
 class ToggleToDialogAA extends StatefulWidget {

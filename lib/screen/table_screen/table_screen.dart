@@ -27,45 +27,6 @@ class _TableScreenState extends State<TableScreen> {
   @override
   Widget build(BuildContext context) {
     return LayoutTable(
-      child: BlocConsumer<ScaduleBloc,ScaduleState>(
-        listener: (context,state){
-        },
-        builder: (context,state){
-          return state.when(
-            initial: () => TableStateBox('initial'),
-            loading: () => TableLoadingBox(),
-            error: (err) => TableStateBox('Error : ${err.toString()}'),
-            loaded: (timeA, timeB){
-              List<TableModel> subTableA = List.from(timeA);
-              List<TableModel> subTableB = List.from(timeB);
-              subTableA.sort((a,b)=>a.arrivetime.compareTo(b.arrivetime));
-              subTableB.sort((a,b)=>a.arrivetime.compareTo(b.arrivetime));
-              var filtedA = subTableA.where((e) => e.arrivetime != '00:00:00').toList();
-              var filtedB = subTableB.where((e) => e.arrivetime != '00:00:00').toList();
-
-              return TimeTable(
-                childA: ListView.builder(
-                    controller: _scrollControllerA,
-                    itemCount: filtedA.length,
-                    itemBuilder: (context, index){
-                      var row = filtedA[index];
-                      return TableList(
-                          row.sname,row.ename, row.express.name,row.arrivetime);
-                    }),
-
-                childB: ListView.builder(
-                    controller: _scrollControllerB,
-                    itemCount: filtedB.length,
-                    itemBuilder: (context, index){
-                      var row = filtedB[index];
-                      return TableList(
-                          row.sname,row.ename, row.express.name,row.arrivetime);
-                    }),
-              );
-
-            },);
-        },
-      ),
       floatingActionButton: Stack(
         children: <Widget>[
           Align(
@@ -116,6 +77,45 @@ class _TableScreenState extends State<TableScreen> {
           ),
 
         ],
+      ),
+      child: BlocConsumer<ScaduleBloc,ScaduleState>(
+        listener: (context,state){
+        },
+        builder: (context,state){
+          return state.when(
+            initial: () => TableStateBox('initial'),
+            loading: () => TableLoadingBox(),
+            error: (err) => TableStateBox('Error : ${err.toString()}'),
+            loaded: (timeA, timeB){
+              List<TableModel> subTableA = List.from(timeA);
+              List<TableModel> subTableB = List.from(timeB);
+              subTableA.sort((a,b)=>a.arrivetime.compareTo(b.arrivetime));
+              subTableB.sort((a,b)=>a.arrivetime.compareTo(b.arrivetime));
+              var filtedA = subTableA.where((e) => e.arrivetime != '00:00:00').toList();
+              var filtedB = subTableB.where((e) => e.arrivetime != '00:00:00').toList();
+
+              return TimeTable(
+                childA: ListView.builder(
+                    controller: _scrollControllerA,
+                    itemCount: filtedA.length,
+                    itemBuilder: (context, index){
+                      var row = filtedA[index];
+                      return TableList(
+                          row.sname,row.ename, row.express.name,row.arrivetime);
+                    }),
+
+                childB: ListView.builder(
+                    controller: _scrollControllerB,
+                    itemCount: filtedB.length,
+                    itemBuilder: (context, index){
+                      var row = filtedB[index];
+                      return TableList(
+                          row.sname,row.ename, row.express.name,row.arrivetime);
+                    }),
+              );
+
+            },);
+        },
       ),
 
 

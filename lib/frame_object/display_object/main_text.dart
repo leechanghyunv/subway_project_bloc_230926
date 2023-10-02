@@ -1,4 +1,3 @@
-import 'package:subway_project_withbloc_230919/bloc_provider/store_info_bloc/store_to_ui_bloc/transfer_bloc.dart';
 import '../../custom_widget/common.dart';
 import '../../setting/exportA.dart';
 

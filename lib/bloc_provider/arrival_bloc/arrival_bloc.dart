@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:dio/dio.dart';
+import 'package:subway_project_withbloc_230919/setting/apikey.dart';
 
 
 import '../../api_repository/retrofit_repo.dart';
@@ -24,7 +25,7 @@ class ArrivalBloc extends Bloc<ArrivalEvent, ArrivalState> {
     on<ArrivalEvent>((event, emit) async {
       try{
         emit(_Loading());
-        final response = await arrivalapi.getArrival(event.name);
+        final response = await arrivalapi.getArrival(seoulKey,event.name);
         final List<ArrivalModel>? arrival = response.arrival;
 
           var filtedArrival = arrival

@@ -7,6 +7,7 @@ export 'package:rxdart/rxdart.dart';
 export 'package:intl/intl.dart';
 export 'dart:developer';
 
+export 'package:subway_project_withbloc_230919/bloc_provider/sub_info_bloc/sub_info_provider.dart';
 export 'package:subway_project_withbloc_230919/frame_object/display_object/color_bar.dart';
 export 'package:subway_project_withbloc_230919/inside_toggle/switch_dialogA.dart';
 export 'package:subway_project_withbloc_230919/inside_toggle/switch_dialogB.dart';

@@ -20,8 +20,8 @@ class ScaduleBloc extends Bloc<ScaduleEvent, ScaduleState> {
     on<ScaduleEvent>((event, emit) async {
       try{
         emit(_Loading());
-        final responseA = await seoulapi.getTimeTable(event.code, output, '1');
-        final responseB = await seoulapi.getTimeTable(event.code, output, '2');
+        final responseA = await seoulapi.getTimeTable(seoulKey,event.code, output, '1');
+        final responseB = await seoulapi.getTimeTable(seoulKey,event.code, output, '2');
           List<TableModel> tableA = responseA.timetable!.row!.toList();
           List<TableModel> tableB = responseB.timetable!.row!.toList();
           emit(_Loaded(tableA, tableB));

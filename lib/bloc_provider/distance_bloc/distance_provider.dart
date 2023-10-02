@@ -17,7 +17,7 @@ class DistanceCubit extends Cubit<SkTelecom_Model> {
 
     final headers = {
       'accept': 'application/json',
-      'appKey': 'ceevGND92fauEWQ8gfEnJ2i2gTlX1sxT2DBh3XRh',
+      'appKey': skKey,
       'content-type': 'application/json',
     };
 

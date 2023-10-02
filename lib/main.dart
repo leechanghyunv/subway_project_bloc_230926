@@ -1,20 +1,19 @@
 import 'package:get/get.dart';
-import 'package:subway_project_withbloc_230919/bloc_provider/sub_List_bloc/sub_list_cubit.dart';
 import 'package:subway_project_withbloc_230919/setting/exportA.dart';
 import 'package:subway_project_withbloc_230919/setting/exportB.dart';
 import 'package:timezone/data/latest.dart' as tz;
 
-import 'bloc_provider/sub_info_bloc/sub_info_provider.dart';
 
 Future<void> _initialize() async {
   WidgetsFlutterBinding.ensureInitialized();
   await NaverMapSdk.instance.initialize(
-      clientId: 'udn9m0j2pb',
+      clientId: naverKey,
       onAuthFailed: (ex) => log("********* 네이버맵 인증오류 : $ex *********"));
 }
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: ".env");
   HydratedBloc.storage = await HydratedStorage.build(
       storageDirectory: kIsWeb
           ? HydratedStorage.webStorageDirectory

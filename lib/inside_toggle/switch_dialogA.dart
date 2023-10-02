@@ -1,6 +1,6 @@
-import 'package:subway_project_withbloc_230919/bloc_provider/sub_info_bloc/sub_info_provider.dart';
 import '../model/sub_detail_data_model.dart';
 import '../setting/exportA.dart';
+import '../setting/exportB.dart';
 
 class SwitchDialogA extends StatefulWidget {
   final String name;

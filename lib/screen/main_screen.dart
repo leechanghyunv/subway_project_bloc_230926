@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:subway_project_withbloc_230919/bloc_provider/sub_List_bloc/sub_list_cubit.dart';
 import '../setting/exportA.dart';
 import '../setting/exportB.dart';
 import 'main_screen/main_main_frame.dart';

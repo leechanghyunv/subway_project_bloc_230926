@@ -2,6 +2,14 @@
 
 A new Flutter project.
 
+main package :
+flutter_bloc,hydrated_bloc,bloc
+freezed, local_notification,
+cloud_firestore,
+get_storage,
+geolocator,
+dio,retrofit,
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.

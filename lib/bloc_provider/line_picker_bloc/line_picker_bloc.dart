@@ -18,7 +18,7 @@ class LinePickerBloc extends Bloc<LinePickerEvent, LinePickerState> {
     on<LinePickerEvent>((event, emit) async {
       try{
         emit(_Loading());
-        final response = await arrivalapi.getArrival(event.name);
+        final response = await arrivalapi.getArrival(seoulKey,event.name);
         final List<ArrivalModel>? arrival = response.arrival;
         if(arrival != null){
           List<ArrivalModel> up = arrival.where((e) => updnLine1.contains(e.updnLine)).toList();

@@ -1,3 +1,4 @@
+import '../../setting/apikey.dart';
 import '../../setting/exportA.dart';
 
 part 'weather_event.dart';
@@ -5,8 +6,6 @@ part 'weather_state.dart';
 part 'weather_bloc.freezed.dart';
 
 class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
-
-  static const String weatherKey = '391af738f3d6aea930da389c0e6041ff';
 
   late MyLocation myLocation = MyLocation();
   late WeatherApiService weatherapi;
