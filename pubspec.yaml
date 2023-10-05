@@ -64,9 +64,11 @@ dependencies:
 
   # storage
   shared_preferences: ^2.2.1
-  path_provider: ^2.1.0
+  path_provider: ^2.1.1
   hydrated_bloc: ^9.1.2
   get_storage: ^2.1.1
+  hive_flutter: ^1.1.0
+  hive: ^2.2.3
 
   # network
   flutter_naver_map: ^1.0.2
@@ -112,6 +114,7 @@ dev_dependencies:
   # rules and activating additional ones.
   retrofit_generator: ^7.0.8
   json_serializable: ^6.7.1
+  hive_generator: ^2.0.1
   flutter_lints: ^2.0.0
   build_runner: ^2.4.6
   freezed: ^2.4.2

@@ -73,7 +73,7 @@ export '../../setting/ColorContainer.dart';
 export '../../setting/notification.dart';
 export '../../../model/data_model.dart';
 export '../model/micro_air_model.dart';
-export '../../setting/geolocator.dart';
+export '../api_repository/geolocator.dart';
 export '../model/schedule_model.dart';
 export '../model/arrival_model.dart';
 export '../model/weather_model.dart';

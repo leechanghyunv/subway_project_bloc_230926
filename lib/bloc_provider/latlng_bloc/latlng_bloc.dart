@@ -4,7 +4,7 @@ import 'package:latlong2/latlong.dart';
 import 'package:subway_project_withbloc_230919/bloc_provider/sub_repository_bloc/repository.dart';
 
 import '../../model/data_model.dart';
-import '../../setting/geolocator.dart';
+import '../../api_repository/geolocator.dart';
 
 part 'latlng_event.dart';
 part 'latlng_state.dart';

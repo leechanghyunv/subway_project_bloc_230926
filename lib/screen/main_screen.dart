@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import '../bloc_provider/hive_provider.dart';
 import '../setting/exportA.dart';
 import '../setting/exportB.dart';
 import 'main_screen/main_main_frame.dart';
@@ -131,6 +132,8 @@ class _HomeScreenState extends State<HomeScreen> {
             );
            ;
           }else if(index == 1){
+            List<String> list = chipbox?.values.map((e) => e.name).toSet().toList() ?? [];
+            List<String> reversedList = list.reversed.toList();
             Get.dialog(
               AlertDialog(
                 content: BlocBuilder<SubListCubit,List<String>>(
@@ -141,7 +144,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             subwayList: subList);
                       } else {
                         return SwitchDialogB(
-                            subwayList: []);
+                            subwayList: reversedList);
                       }
                 }),
                 actions: [

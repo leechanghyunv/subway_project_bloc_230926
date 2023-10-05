@@ -1,7 +1,10 @@
 import 'package:get/get.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:subway_project_withbloc_230919/setting/exportA.dart';
 import 'package:subway_project_withbloc_230919/setting/exportB.dart';
 import 'package:timezone/data/latest.dart' as tz;
+import 'bloc_provider/hive_provider.dart';
+import 'model/choice_chip_model.dart';
 
 
 Future<void> _initialize() async {
@@ -14,6 +17,10 @@ Future<void> _initialize() async {
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: ".env");
+  await Hive.initFlutter();
+  Hive.registerAdapter(ChipModelAdapter());
+  HiveService hiveService = HiveService();
+  hiveService.openBox();
   HydratedBloc.storage = await HydratedStorage.build(
       storageDirectory: kIsWeb
           ? HydratedStorage.webStorageDirectory
