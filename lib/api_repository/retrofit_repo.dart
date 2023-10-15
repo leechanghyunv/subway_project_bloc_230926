@@ -1,12 +1,11 @@
 import 'package:subway_project_withbloc_230919/setting/exportA.dart';
 import 'package:subway_project_withbloc_230919/setting/exportB.dart';
-
 part 'retrofit_repo.g.dart';
 
 const String baseUrl = 'http://openapi.seoul.go.kr:8088';
 const String arrivalUrl = 'http://swopenapi.seoul.go.kr/api/subway';
 const String weatherUrl = 'https://api.openweathermap.org/data/2.5';
-const String skdataUrl = 'http://apis.openapi.sk.com/transit/routes';
+const String skdataUrl = 'http://apis.openapi.sk.com/transit';
 
 @RestApi(baseUrl : baseUrl)
 abstract class SeoulApiService{
@@ -49,6 +48,4 @@ abstract class WeatherApiService{
       @Query("appid") String appid,
       );
 }
-
-
 

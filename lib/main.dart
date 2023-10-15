@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:subway_project_withbloc_230919/presentation/screen/screen_controller.dart';
 import 'package:subway_project_withbloc_230919/setting/exportA.dart';
 import 'package:subway_project_withbloc_230919/setting/exportB.dart';
 import 'package:timezone/data/latest.dart' as tz;

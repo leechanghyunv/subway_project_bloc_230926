@@ -7,22 +7,22 @@ Future<String> fetchData() async {
 
 Future<bool?> savemsg(String position, String name, String ename) async => await
 Fluttertoast.showToast(
-    msg:'${position} ${name}역 저장되었습니다.\n${ename}',
+    msg:'$position $name역 저장되었습니다.\n$ename',
     gravity: ToastGravity.CENTER);
 
 Future<bool?> savemsg2(String name) async => await
 Fluttertoast.showToast(
-    msg:'환승역 ${name}역 저장되었습니다',
+    msg:'환승역 $name역 저장되었습니다',
     gravity: ToastGravity.CENTER);
 
 Future<bool?> tablemsg(String eng,String name) async => await
 Fluttertoast.showToast(
-    msg:'${eng} ${name}',
+    msg:'$eng $name',
     gravity: ToastGravity.CENTER);
 
 Future<bool?> tableLast(String name) async => await
 Fluttertoast.showToast(
-    msg:'${name}역 막차 시간표로 이동합니다.',
+    msg:'$name역 막차 시간표로 이동합니다.',
     gravity: ToastGravity.CENTER);
 
 Future<bool?> serveymsg() async => await
@@ -32,7 +32,7 @@ Fluttertoast.showToast(
 
 Future<bool?> Select(String name) async => await
 Fluttertoast.showToast(
-    msg:'${name}역을 선택하셨습니다',
+    msg:'$name역을 선택하셨습니다',
     gravity: ToastGravity.CENTER);
 
 Future<bool?> showmsg() => Fluttertoast.showToast(

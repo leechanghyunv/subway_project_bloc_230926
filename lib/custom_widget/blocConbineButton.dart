@@ -56,7 +56,7 @@ class _BlocCombineButtonState extends State<BlocCombineButton> {
                     var info = await model.first;
                     context.read<StoreABloc>().
                     add(StoreAEvent.started(code, model));
-                    print('info ${info}');
+                    print('info $info');
                     context.read<TableInfoBloc>().
                     add(TableInfoEvent.started(
                         SubwayModelwithCode(
@@ -89,7 +89,7 @@ class _BlocCombineButtonState extends State<BlocCombineButton> {
                     hiveService.putBox(ChipModel(name: info.subname));
                     setState(() {});
                   } else {
-                    print('model value is Empty and code is ${code}');
+                    print('model value is Empty and code is $code');
                   }
                 },
                 comment: 'Save'),
